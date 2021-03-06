@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * El algoritmo de fuerza bruta para resolver el problema consiste en intentar
  *  todas las posibilidades, es decir, calcular las longitudes de todos los
@@ -5,14 +7,22 @@
  *
  */
 public class FuerzaBruta implements AlgoritmoTSP{
-    private int[][] matriz;
-    //lista de resultados?
+    private Matriz matriz;
 
-    public FuerzaBruta(int[][] matriz) {
+    public FuerzaBruta(Matriz matriz) {
         this.matriz = matriz;
     }
 
-    public void resolver() {
+    public Recorrido resolver() {
+        List<Recorrido> recorridos = matriz.devolverRecorridos();
+        Recorrido mejorRecorrido = null;
 
+        for (Recorrido recorrido : recorridos) {
+            if (recorrido.devolverCoste() < mejorRecorrido.devolverCoste()) {
+                mejorRecorrido = recorrido;
+            }
+        }
+
+        return mejorRecorrido;
     }
 }

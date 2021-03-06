@@ -3,5 +3,5 @@
  *
  */
 public interface AlgoritmoTSP {
-    public void resolver();
+    public Recorrido resolver();
 }

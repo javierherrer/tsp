@@ -1,6 +1,7 @@
 public class AlgoritmoVoraz implements AlgoritmoTSP{
 
-    public void resolver() {
+    public Recorrido resolver() {
         //TODO
+        return null;
     }
 }

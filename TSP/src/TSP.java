@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Ejecución del programa, captura de parámetros y llamada al algoritmo correspondiente
  *
@@ -16,20 +18,15 @@ public class TSP {
     private static final String OPCION_ALGORITMO_VORAZ = "-av";
 
     static public void main(String[] args) {
+        test("tspbenchmarks\\a11.tsp");
+
         if (args.length != NUM_ARGS) {
             System.out.println(ERROR_SINTAXIS);
         } else {
             AlgoritmoTSP algoritmo = null;
-            int dim = DIM_POR_DEFECTO;
-            int[][] matriz = new int[dim][dim];
             String opcion = args[0];
             String fichero = args[1];
-            try {
-                dim = FuncionesAuxiliaresTSP.devolverDimensionMatriz(fichero);
-                matriz = FuncionesAuxiliaresTSP.leerMatriz(fichero, dim);
-            } catch(Exception ex) {
-                ex.printStackTrace();
-            }
+            Matriz matriz = new Matriz(fichero);
 
             switch(opcion) {
                 case OPCION_FUERZA_BRUTA:
@@ -43,7 +40,24 @@ public class TSP {
                     break;
             }
 
-            algoritmo.resolver();
+            long time = System.currentTimeMillis();
+            Recorrido solucion = algoritmo.resolver();
+            time = System.currentTimeMillis() - time;
+
+            System.out.println("Tiempo: " + time);
+            System.out.println(solucion);
         }
+
+    }
+
+    static public void test(String fichero){
+        Matriz matriz = new Matriz(fichero);
+        new Permutaciones(4, matriz);
+
+//        List<Recorrido> permutaciones = matriz.devolverRecorridos();
+//
+//        for (Recorrido r : permutaciones){
+//            System.out.println(r);
+//        }
     }
 }
