@@ -15,9 +15,10 @@ public class FuerzaBruta implements AlgoritmoTSP{
 
     public Recorrido resolver() {
         List<Recorrido> recorridos = matriz.devolverRecorridos();
-        Recorrido mejorRecorrido = null;
+        Recorrido mejorRecorrido = recorridos.get(0);
 
         for (Recorrido recorrido : recorridos) {
+            System.out.println(recorrido);
             if (recorrido.devolverCoste() < mejorRecorrido.devolverCoste()) {
                 mejorRecorrido = recorrido;
             }

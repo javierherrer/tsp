@@ -1,20 +1,22 @@
 public class Vertice {
-    public int id;
-    private String nombre;
+    private int id;
+    private char nombre;
 
     public Vertice(int id) {
         this.id = id;
+        nombre = (char) (id+65);
     }
 
-    public String devolverNombre() {
-        //TODO
-        return null;
+    public int obtenerId() {
+        return id;
+    }
+
+    public char obtenerNombre() {
+        return nombre;
     }
 
     @Override
     public String toString() {
-        return "Vertice{" +
-                "id=" + id +
-                '}';
+        return ""+ nombre;
     }
 }

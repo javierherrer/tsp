@@ -56,97 +56,14 @@ public class Matriz {
      *
      */
     public List<Recorrido> devolverRecorridos() {
-        //TODO
-//        int[] indices = new int[matriz.length];
-//        for (int i = 0; i < indices.length; i++){
-//            indices[i] = i;
-//        }
-//        List<Recorrido> recorridos = new ArrayList<>();
-//        permutar2(recorridos, indices);
-//        return recorridos;
-        return null;
+        return Permutaciones.obtenerPermutaciones(matriz.length, this);
     }
 
 
-
-
-//    //    0 10 15 20
-//    //    5  0  9 10
-//    //    6 13  0 12
-//    //    8  8  9  0
-//    // Vector es un array de indices
-//    public void permutar(List<List<Arista>> permutaciones, int[] vector) {
-//        // Caso base
-//        if(vector.length == 2){
-//            Arista arista;
-//            LinkedList<Arista> recorrido = new LinkedList<>();
-//            // Añado la primera posibilidad
-//            int origen = vector[0];
-//            int destino = vector[1];
-//            arista = new Arista(origen, destino, devolverCoste(origen, destino));
-//
-//            recorrido.addLast(arista);
-//            permutaciones.add(recorrido);
-//            // Añado la otra permutacion
-//            recorrido = new LinkedList<>();
-//            arista = new Arista(destino, origen, devolverCoste(origen, destino));
-//
-//            recorrido.addLast(arista);
-//            permutaciones.add(recorrido);
-//
-//        } else {
-//            int origen = vector[0]; // <-- Primer vertice
-//            int[] subArray = Arrays.copyOfRange(vector, 1, vector.length);
-//
-//            permutar(permutaciones, subArray); // <-- Permutaciones
-//            for (List<Arista> recorrido: permutaciones) {
-//
-//                LinkedList<Arista> list = (LinkedList<Arista>)recorrido;
-//                int destino = list.getFirst().origen;
-//                list.addFirst(new Arista(origen, destino, devolverCoste(origen, destino)));
-//            }
-//        }
-//    }
-//
-//    public void permutar2(List<Recorrido> permutaciones, int[] vector) {
-//        // Caso base
-//        if(vector.length == 2){
-//            Arista arista;
-//            Recorrido r  = new Recorrido(matriz.length);
-//            // Añado la primera posibilidad
-//            int origen = vector[0];
-//            int destino = vector[1];
-//            arista = new Arista(origen, destino, devolverCoste(origen, destino));
-//
-//            r.appendArista(arista);
-//            permutaciones.add(r);
-//            // Añado la otra permutacion
-//             r  = new Recorrido(matriz.length);
-//            arista = new Arista(destino, origen, devolverCoste(origen, destino));
-//
-//            r.appendArista(arista);
-//            permutaciones.add(r);
-//
-//        } else {
-//            int origen = vector[0]; // <-- Primer vertice
-//            int[] subArray = Arrays.copyOfRange(vector, 1, vector.length);
-//            List<Recorrido> nuevosRecorridos = new ArrayList<>();
-//
-//            permutar2(permutaciones, subArray); // <-- Permutaciones
-//            for (Recorrido recorrido: permutaciones) {
-//
-//            }
-//        }
-//    }
-
-
-    private int devolverCoste(Vertice desde, Vertice hasta) {
-        return matriz[desde.id][hasta.id];
+    public int devolverCoste(int desde, int hasta) {
+        return matriz[desde][hasta];
     }
 
-    public int devolverCoste(Arista arista) {
-        return devolverCoste(arista.origen, arista.destino);
-    }
 
 
 }

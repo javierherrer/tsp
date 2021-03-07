@@ -1,26 +1,18 @@
-import javax.sound.midi.Receiver;
 import java.util.Arrays;
 
 public class Recorrido {
-    // Lista de vértices del recorrido
     Arista[] aristas;
     int coste;
-    int appendPos;
 
-    public Recorrido(int longitud) {
-        this.aristas = new Arista[longitud];
-        appendPos = longitud - 1;
-    }
-
-    public Recorrido(Arista[] vertices, Matriz matriz) {
+    public Recorrido(Arista[] vertices) {
         this.aristas = vertices;
-//        calcularCoste(matriz);
+        calcularCoste();
     }
 
-    private void calcularCoste(Matriz matriz) {
+    private void calcularCoste() {
         int coste = 0;
         for (int i = 0; i < aristas.length; i++) {
-            coste += matriz.devolverCoste(aristas[i]);
+            coste += aristas[i].obtenerCoste();
         }
 
         this.coste = coste;
@@ -32,10 +24,12 @@ public class Recorrido {
 
     @Override
     public String toString() {
-        //TODO
-        return "Recorrido{" +
-                "vertices=" + Arrays.toString(aristas) +
-                ", coste=" + coste +
-                '}';
+        String cadena = "Coste: " + coste + ", Aristas: { ";
+        for (Arista arista : aristas) {
+            cadena += arista + " ";
+        }
+        cadena += "}";
+
+        return cadena;
     }
 }

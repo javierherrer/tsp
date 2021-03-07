@@ -1,21 +1,23 @@
 import java.util.Arrays;
 
 public class Arista {
-    public Vertice origen;
-    public Vertice destino;
+    private Vertice origen;
+    private Vertice destino;
+    private int coste;
 
 
-    public Arista(int origen, int destino){
+    public Arista(int origen, int destino, int coste){
         this.origen = new Vertice(origen);
         this.destino = new Vertice(destino);
+        this.coste = coste;
+    }
+
+    public int obtenerCoste() {
+        return coste;
     }
 
     @Override
     public String toString() {
-        //TODO
-        return "Arista{" +
-                "Origen=" + origen +
-                " Destino="+destino +
-                '}';
+        return "(" + origen + ", " + destino + ")";
     }
 }

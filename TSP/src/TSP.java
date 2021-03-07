@@ -5,6 +5,7 @@ import java.util.*;
  *
  */
 public class TSP {
+    private static final boolean DEBUG = true;
     private static final int NUM_ARGS = 2;
     private static final int DIM_POR_DEFECTO = 3;
     private static final String ERROR_SINTAXIS = "La forma de ejecución es:\n" +
@@ -18,7 +19,11 @@ public class TSP {
     private static final String OPCION_ALGORITMO_VORAZ = "-av";
 
     static public void main(String[] args) {
-        test("tspbenchmarks\\a11.tsp");
+        if (DEBUG) {
+            test("tspbenchmarks\\a4.tsp");
+            System.exit(0);
+        }
+
 
         if (args.length != NUM_ARGS) {
             System.out.println(ERROR_SINTAXIS);
@@ -45,19 +50,19 @@ public class TSP {
             time = System.currentTimeMillis() - time;
 
             System.out.println("Tiempo: " + time);
-            System.out.println(solucion);
+            System.out.println("Mejor recorrido: " + solucion);
         }
 
     }
 
     static public void test(String fichero){
         Matriz matriz = new Matriz(fichero);
-        new Permutaciones(4, matriz);
+        long time = System.currentTimeMillis();
+        Recorrido solucion = new FuerzaBruta(matriz).resolver();
+        time = System.currentTimeMillis() - time;
 
-//        List<Recorrido> permutaciones = matriz.devolverRecorridos();
-//
-//        for (Recorrido r : permutaciones){
-//            System.out.println(r);
-//        }
+        System.out.println("Tiempo: " + time);
+        System.out.println("Mejor recorrido: " + solucion);
+
     }
 }
