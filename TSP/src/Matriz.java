@@ -17,11 +17,6 @@ public class Matriz {
         }
     }
 
-    /**
-     * https://stackoverflow.com/questions/1277880/
-     * how-can-i-get-the-count-of-line-in-a-file-in-an-efficient-way/1277904
-     *
-     */
     private static int devolverDimensionMatriz(String fichero)
             throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fichero));
@@ -50,7 +45,6 @@ public class Matriz {
         return myArray;
     }
 
-
     /**
      * Devuelve una lista con todos los recorridos posibles
      *
@@ -59,11 +53,7 @@ public class Matriz {
         return Permutaciones.obtenerPermutaciones(matriz.length, this);
     }
 
-
     public int devolverCoste(int desde, int hasta) {
         return matriz[desde][hasta];
     }
-
-
-
 }
