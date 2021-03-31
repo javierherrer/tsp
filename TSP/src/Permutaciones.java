@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// Java program to distinct permutations of the string
+/**
+ * Algoritmo de Heap
+ * https://es.wikipedia.org/wiki/Algoritmo_de_Heap
+ */
 public class Permutaciones {
 
     public static List<Recorrido> recorridos;
