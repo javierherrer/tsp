@@ -21,11 +21,11 @@ public class Permutaciones {
 
     private static void printAllRecursive(int n, int[] elements,
                                           Matriz matriz) {
-        Arista[] aristas;
+        Recorrido recorrido;
 
         if(n == 1) {
-            aristas = obtenerAristas(elements, matriz);
-            recorridos.add(new Recorrido(aristas));
+            recorrido = obtenerAristas(elements, matriz);
+            recorridos.add(recorrido);
         } else {
             for(int i = 0; i < n-1; i++) {
                 printAllRecursive(n - 1, elements, matriz);
@@ -45,27 +45,27 @@ public class Permutaciones {
         input[b] = tmp;
     }
 
-    private static Arista[] obtenerAristas(int[] vertices, Matriz matriz) {
-        Arista[] aristas = new Arista[vertices.length + 1];
+    private static Recorrido obtenerAristas(int[] vertices, Matriz matriz) {
+        Recorrido recorrido = new Recorrido();
         int i = 0;
 
         int desde = 0;
         int hasta = vertices[0];
-        aristas[i] = new Arista(desde, hasta,
-                                matriz.devolverCoste(desde, hasta));
+        recorrido.añadirArista(new Arista(desde, hasta,
+                matriz.devolverCoste(desde, hasta)));
 
-        for(i = 1; i < aristas.length -1; i++) {
+        for(i = 1; i < vertices.length; i++) {
             desde = vertices[i-1];
             hasta = vertices[i];
-            aristas[i] = new Arista(desde, hasta,
-                                    matriz.devolverCoste(desde, hasta));
+            recorrido.añadirArista(new Arista(desde, hasta,
+                    matriz.devolverCoste(desde, hasta)));
         }
 
         desde = vertices[i-1];
         hasta = 0;
-        aristas[i] = new Arista(desde, hasta,
-                                matriz.devolverCoste(desde, hasta));
+        recorrido.añadirArista(new Arista(desde, hasta,
+                                matriz.devolverCoste(desde, hasta)));
 
-        return aristas;
+        return recorrido;
     }
 }

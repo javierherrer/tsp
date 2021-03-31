@@ -38,7 +38,7 @@ public class TSP {
                     algoritmo = new FuerzaBruta(matriz);
                     break;
                 case OPCION_ALGORITMO_VORAZ:
-                    algoritmo = new AlgoritmoVoraz();
+                    algoritmo = new AlgoritmoVoraz(matriz);
                     break;
                 default:
                     System.out.println(ERROR_SINTAXIS);
@@ -63,6 +63,8 @@ public class TSP {
 
         System.out.println("Tiempo: " + time);
         System.out.println("Mejor recorrido: " + solucion);
-
+        System.out.println(matriz.devolverAristas());
+        Recorrido solucionVoraz = new AlgoritmoVoraz(matriz).resolver();
+        System.out.println("Mejor recorrido: " + solucionVoraz);
     }
 }

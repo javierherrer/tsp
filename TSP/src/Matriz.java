@@ -53,7 +53,29 @@ public class Matriz {
         return Permutaciones.obtenerPermutaciones(matriz.length, this);
     }
 
+    /**
+     * Devuelve las parejas ordenadas por distancia creciente entre sus puntos
+     *
+     */
+    public List<Arista> devolverAristas() {
+        ArrayList<Arista> aristas = new ArrayList<>();
+        //TODO
+        for (int i = 0; i < this.matriz[0].length; i++){
+            for (int j = 0; j < this.matriz[0].length; j++){
+                if (matriz[i][j] != 0){
+                    aristas.add(new Arista(i, j, matriz[i][j] ));
+                }
+            }
+        }
+        Collections.sort(aristas);
+        return aristas;
+    }
+
     public int devolverCoste(int desde, int hasta) {
         return matriz[desde][hasta];
+    }
+
+    public int devolverDimension() {
+        return matriz[0].length;
     }
 }
