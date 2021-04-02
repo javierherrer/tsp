@@ -46,7 +46,7 @@ public class Permutaciones {
     }
 
     private static Recorrido obtenerAristas(int[] vertices, Matriz matriz) {
-        Recorrido recorrido = new Recorrido();
+        Recorrido recorrido = new Recorrido(matriz.devolverDimension());
         int i = 0;
 
         int desde = 0;

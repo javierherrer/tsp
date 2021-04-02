@@ -1,4 +1,3 @@
-import javax.sound.midi.Receiver;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -67,6 +66,25 @@ public class Matriz {
                 }
             }
         }
+        Collections.sort(aristas);
+        return aristas;
+    }
+
+    /**
+     * Devuelve las parejas ordenadas desde un vértice por distancia creciente
+     *  entre sus puntos
+     *
+     */
+    public List<Arista> obtenerAristasDesde(Vertice desde) {
+        ArrayList<Arista> aristas = new ArrayList<>();
+
+        int i = desde.obtenerId();
+        for (int j = 0; j < this.matriz[0].length; j++){
+            if (matriz[i][j] != 0){
+                aristas.add(new Arista(i, j, matriz[i][j] ));
+            }
+        }
+
         Collections.sort(aristas);
         return aristas;
     }

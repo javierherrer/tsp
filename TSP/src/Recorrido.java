@@ -1,29 +1,16 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Recorrido {
+    //OPCIONAL Atributo origen
     List<Arista> aristas;
+    MatrizAdyacencia matrizAdyacencia;
     int coste;
 
-    public Recorrido(){
+    public Recorrido(int vertices){
         aristas = new ArrayList<>();
-    }
-
-    // Usado en Fuerza bruta
-    public Recorrido(List<Arista> aristas) {
-        this.aristas = aristas;
-        calcularCoste();
-    }
-
-    private void calcularCoste() {
-        int coste = 0;
-
-        for (Arista arista: aristas) {
-            coste += arista.obtenerCoste();
-        }
-
-        this.coste = coste;
+        coste = 0;
+        matrizAdyacencia = new MatrizAdyacencia(vertices);
     }
 
     public int devolverCoste() {
@@ -33,33 +20,19 @@ public class Recorrido {
     public void añadirArista(Arista arista) {
         aristas.add(arista);
         coste += arista.obtenerCoste();
+        matrizAdyacencia.añadirArista(arista);
     }
 
-    //si añadiendo más candidatos se puede llegar a una solución
-    public boolean esCompleatable() {
-        //TODO
-
-        //solo comprobar si no se han visitado todos los puntos
-
-        return false;
+    public int obtenerNumAristas() {
+        return aristas.size();
     }
 
-    public
-
-    public int obtenerVisitasVertice(Vertice vertice) {
-        int visitas = 0;
-        for (Arista arista : aristas) {
-            if (arista.contiene(vertice)) {
-                visitas++;
-            }
-        }
-        return visitas;
+    public boolean aristaCumpleRestriccion(Arista arista) {
+        Vertice destino = arista.obtenerDestino();
+        return ! matrizAdyacencia.existeDestino(destino) &&
+                destino.obtenerId() != 0;
     }
 
-    private void ordenarRecorrido(List<Arista> desordenado){
-        int[] orden = new int[desordenado.size()];
-
-    }
     @Override
     public String toString() {
         String cadena = "Coste: " + coste + ", Aristas: { ";

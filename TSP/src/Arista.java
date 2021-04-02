@@ -36,10 +36,11 @@ public class Arista implements Comparable<Arista>{
         return 1;
     }
 
-    public int devolverOrigen(){
-        return origen.obtenerId();
+    public Vertice obtenerOrigen(){
+        return origen;
     }
-    public int devolverDestino(){
-        return destino.obtenerId();
+
+    public Vertice obtenerDestino(){
+        return destino;
     }
 }

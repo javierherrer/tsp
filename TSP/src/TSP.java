@@ -20,7 +20,7 @@ public class TSP {
 
     static public void main(String[] args) {
         if (DEBUG) {
-            test("tspbenchmarks\\a4.tsp");
+            test("tspbenchmarks\\a11.tsp");
             System.exit(0);
         }
 
@@ -57,14 +57,23 @@ public class TSP {
 
     static public void test(String fichero){
         Matriz matriz = new Matriz(fichero);
-        long time = System.currentTimeMillis();
-        Recorrido solucion = new FuerzaBruta(matriz).resolver();
+        long time;
+        Recorrido solucion;
+
+//        System.out.println("**********FUERZA BRUTA**********");
+//        time = System.currentTimeMillis();
+//        solucion = new FuerzaBruta(matriz).resolver();
+//        time = System.currentTimeMillis() - time;
+//
+//        System.out.println("Tiempo: " + time);
+//        System.out.println("Mejor recorrido: " + solucion);
+
+        System.out.println("**********ALGORITMO VORAZ**********");
+        time = System.currentTimeMillis();
+        solucion = new AlgoritmoVoraz(matriz).resolver();
         time = System.currentTimeMillis() - time;
 
         System.out.println("Tiempo: " + time);
         System.out.println("Mejor recorrido: " + solucion);
-        System.out.println(matriz.devolverAristas());
-        Recorrido solucionVoraz = new AlgoritmoVoraz(matriz).resolver();
-        System.out.println("Mejor recorrido: " + solucionVoraz);
     }
 }

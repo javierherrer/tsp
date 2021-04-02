@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * El algoritmo voraz para resolver el problema consistene en ir seleccionando
@@ -20,56 +17,34 @@ public class AlgoritmoVoraz implements AlgoritmoTSP {
         this.matriz = matriz;
     }
 
+    /**
+     * Solución basada en el algoritmo de Kruscal
+     *
+     */
     public Recorrido resolver() {
-        Map<Integer, Integer> aux = new HashMap<>();
-        List<Arista> aristas = matriz.devolverAristas();
-        Recorrido recorrido = new Recorrido();
+        int vertices = matriz.devolverDimension();
+        Recorrido solucion = new Recorrido(vertices);
+        int i = 0;
 
-        Recorrido candidatos;
-        Recorrido escogidos;
+        Vertice origen = new Vertice(0);
+        List<Arista> aristas = matriz.obtenerAristasDesde(origen);
+        Arista arista = aristas.get(i);
+        solucion.añadirArista(arista);
 
-        for (Aristas arista : parejas) {
-            candidatos.añadirArista(arista);
-
-            if(candidatos.obtenerVisitasVertice() < 3 && candidatos.esCompletable()) {
-                escogidos.add(arista);
-            } else {
-                candidatos.delete(arista);
-            }
+        while (solucion.obtenerNumAristas() < vertices - 1) {
+            Vertice ultimoVertice = arista.obtenerDestino();
+            aristas = matriz.obtenerAristasDesde(ultimoVertice);
+            i = 0;
+            do {
+                arista = aristas.get(i);
+                i++;
+            } while (! solucion.aristaCumpleRestriccion(arista));
+            solucion.añadirArista(arista);
         }
+        int desde = arista.obtenerDestino().obtenerId();
+        arista = new Arista(desde, 0, matriz.devolverCoste(desde, 0));
+        solucion.añadirArista(arista);
 
-
-        int origen;
-        int destino;
-        int nVisitasDestino;
-        int nVisitasOrigen;
-
-        for (Arista arista : aristas) {
-            origen = arista.devolverOrigen();
-            destino = arista.devolverDestino();
-
-            nVisitasOrigen = aux.getOrDefault(origen, 0);
-            nVisitasDestino = aux.getOrDefault(destino, 0);
-
-            // Si no se ha visitado 2 veces
-            if(nVisitasOrigen < 2 && nVisitasDestino < 2){
-                recorrido.añadirArista(arista);
-                if (aristas.size() < matriz.devolverDimension()){
-
-                }
-
-                // Actualizamos el número de visitas
-                nVisitasDestino++;
-                nVisitasOrigen++;
-                aux.put(origen, nVisitasOrigen);
-                aux.put(destino, nVisitasDestino);
-            }
-            if(aristas.size() == matriz.devolverDimension()){
-                break;
-            }
-        }
-
-        //TODO ordenar el recorrido
-        return recorrido;
+        return solucion;
     }
 }
