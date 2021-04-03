@@ -4,7 +4,7 @@
 \usepackage[spanish,es-noindentfirst]{babel}
 \usepackage{graphicx}
 %Code Highlighting
-\usepackage{minted}                 
+%\usepackage{minted}                 
 \usepackage{lastpage}
 
 \usepackage{biblatex}
@@ -14,8 +14,8 @@
 \usepackage{fancyhdr}               
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{<<TÍTULO>>}
-\fancyhead[R]{<<ASIGNATURA>>}
+\fancyhead[L]{Práctica de la asignatura}
+\fancyhead[R]{Algoritmia básica}
 \fancyfoot[L]{Grado en Ingeniería Informática \\ Escuela de Ingeniería y Arquitectura}
 \fancyfoot[R]{\thepage \hspace{1pt} de \pageref{LastPage}}
 
@@ -28,14 +28,14 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={<<TÍTULO>>},                   
+    pdftitle={Práctica de la asignatura: El problema del viajante de comercio},                   
     bookmarks=true,
 }
 \urlstyle{same}
 
-\title{<<TÍTULO>>}                            
+\title{Práctica de la asignatura: El problema del viajante de comercio}                            
 \author{Javier Herrer Torres}      
-\date{<<FECHA>>}                            
+\date{Abril 2021}                            
 
 \begin{document}
 
@@ -44,19 +44,20 @@
         \vspace*{1cm}
             
         \Huge
-        \textbf{<<TÍTULO>>}
+        \textbf{Práctica de la asignatura}
             
         \vspace{0.5cm}
         \LARGE
-        Subtítulo
+        El problema del viajante de comercio
             
         \vspace{1.5cm}
             
-        \textbf{Javier Herrer Torres} (NIP: 776609)
+        \textbf{Javier Herrer Torres} (NIP: 776609)\\
+        \textbf{Javier Fuster Trallero} (NIP: 626901)
             
         \vfill
             
-        <<ASIGNATURA>>\\
+        Algoritmia básica\\
         Grado en Ingeniería Informática\\
             
         \vspace{1.5cm}
@@ -73,23 +74,25 @@
     \end{center}
 \end{titlepage}
 
-\begin{abstract}
-    % Resumen: es un apartado fundamental. Es lo primero que se lee y muchas veces lo único que lee. Es la síntesis de todo el trabajo realizado, qué, cómo y por qué hemos hecho el trabajo. Debe ser auto contenido y debemos esbozar nuestras conclusiones.
-\end{abstract}
-
-\tableofcontents
-
-\section{Introducción}
-% Introducción: enmarca y sitúa el trabajo a realizar.
-
 \section{Objetivos}
 % Objetivos: explica qué se quiere conseguir.
-
-\section{Metodología}
-% Describe los pasos realizados para llegar hasta los resultados. Todas aquellas decisiones de diseño tomadas en el proceso deben incluirse.
+El objetivo de la práctica es implementar y comparar la eficiencia en tiempo de distintos esquemas algorítmicos para la resolución del problema del viajante de comercio (TSP, \textit{Travelling Salesman Problem}).
 
 \section{Resultados}
 % Resultado(s): hay que presentar los resultados, explicarlos y analizarlos.
+\subsection{Fuerza bruta}
+El algoritmo de \emph{fuerza bruta} para resolver el problema consiste en intentar todas las posibilidades, es decir, calcular las longitudes de todos los recorridos posibles, y seleccionar la de longitud mínima.
+Obviamente, el coste del algoritmo crece exponencialmente con el número de puntos a visitar.
+
+
+
+\subsection{Algoritmo voraz}
+
+
+\subsection{Programación dinámica}
+
+
+\subsection{Ramificación y poda}
 
 \section{Conclusiones}
 % Conclusiones: es lo último que se lee, por tanto es una sección muy importante que se debe utilizar para remarcar los mensajes que queremos que el lector reciba. Por ejemplo, si estamos evaluando un producto podemos enfatizar sus puntos fuertes y sus puntos débiles, y señalar posibilidades de mejora.
