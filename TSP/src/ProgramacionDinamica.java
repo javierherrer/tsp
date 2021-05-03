@@ -6,12 +6,14 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
     private static Vertice origen;
     private static List<Vertice> S;
     private static GTab gtab;
+    private static List<Vertice> camino;
 
     public ProgramacionDinamica(Matriz matriz) {
         this.matriz = matriz;
         origen = new Vertice(0);
         S = new ArrayList<>();
         gtab = new GTab();
+        camino = new ArrayList<>();
     }
 
     /**
@@ -49,6 +51,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
                     distancia = matriz.devolverCoste(i,j) + g(j, nuevaS);
                     if ( distancia < masCorto ) {
                         masCorto = distancia;
+                        camino.add(j);
                     }
                 }
                 gtab.guardarCoste(i, S, masCorto);
