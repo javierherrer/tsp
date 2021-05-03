@@ -17,6 +17,7 @@ public class TSP {
             "en forma matricial.";
     private static final String OPCION_FUERZA_BRUTA = "-fb";
     private static final String OPCION_ALGORITMO_VORAZ = "-av";
+    private static final String OPCION_PROGRAMACION_DINAMICA = "-pd";
 
     static public void main(String[] args) {
         if (DEBUG) {
@@ -39,6 +40,9 @@ public class TSP {
                     break;
                 case OPCION_ALGORITMO_VORAZ:
                     algoritmo = new AlgoritmoVoraz(matriz);
+                    break;
+                case OPCION_PROGRAMACION_DINAMICA:
+                    algoritmo = new ProgramacionDinamica(matriz);
                     break;
                 default:
                     System.out.println(ERROR_SINTAXIS);

@@ -93,6 +93,10 @@ public class Matriz {
         return matriz[desde][hasta];
     }
 
+    public int devolverCoste(Vertice desde, Vertice hasta) {
+        return matriz[desde.obtenerId()][hasta.obtenerId()];
+    }
+
     public int devolverDimension() {
         return matriz[0].length;
     }
