@@ -71,6 +71,18 @@ public class Matriz {
     }
 
     /**
+     * Devuelve los vértices
+     *
+     */
+    public Set<Vertice> devolverVertices() {
+        Set<Vertice> vertices = new HashSet<>();
+        for (int i = 0; i < this.matriz[0].length; i++) {
+            vertices.add(new Vertice(i));
+        }
+        return vertices;
+    }
+
+    /**
      * Devuelve las parejas ordenadas desde un vértice por distancia creciente
      *  entre sus puntos
      *

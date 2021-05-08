@@ -29,6 +29,14 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
      *
      */
     public Recorrido resolver() {
+        int longitud = 0;
+        Set<Vertice> S = matriz.devolverVertices();
+        S.remove(origen);
+
+        longitud = g(origen, S);
+
+        System.out.println("Mejor coste: " + longitud);
+
         return null;
     }
 
