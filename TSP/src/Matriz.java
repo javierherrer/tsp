@@ -101,6 +101,22 @@ public class Matriz {
         return aristas;
     }
 
+    /**
+     * Devuelve las aristas hasta un vertice
+     *
+     */
+    public List<Arista> obtenerAristasHasta(int hasta) {
+        ArrayList<Arista> aristas = new ArrayList<>();
+
+        for (int j = 0; j < this.matriz[0].length; j++){
+            if (matriz[j][hasta] != 0){
+                aristas.add(new Arista(j, hasta, matriz[j][hasta] ));
+            }
+        }
+
+        return aristas;
+    }
+
     public int devolverCoste(int desde, int hasta) {
         return matriz[desde][hasta];
     }
