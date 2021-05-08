@@ -58,7 +58,6 @@ public class Matriz {
      */
     public List<Arista> devolverAristas() {
         ArrayList<Arista> aristas = new ArrayList<>();
-        //TODO
         for (int i = 0; i < this.matriz[0].length; i++){
             for (int j = 0; j < this.matriz[0].length; j++){
                 if (matriz[i][j] != 0){

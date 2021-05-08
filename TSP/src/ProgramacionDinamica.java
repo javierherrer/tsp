@@ -36,7 +36,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
         longitud = g(origen, S);
 
         System.out.println("Mejor coste: " + longitud);
-
+        List<Vertice> c = camino;
         return null;
     }
 
