@@ -15,7 +15,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
         this.matriz = matriz;
         origen = new Vertice(0);
         S = new HashSet<>();
-        gtab = new GTab();
+        gtab = new GTab(matriz);
         camino = new ArrayList<>();
     }
 
@@ -37,7 +37,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
 
         System.out.println("Mejor coste: " + longitud);
 
-        return null;
+
     }
 
     /**

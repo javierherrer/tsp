@@ -9,13 +9,22 @@ public class GTab {
 
     // Guardamos la distancia desde el vertice hasta el origen con distancia K
     // Se pueden ir borrando las distancias anteriores sin usar, K - 2 por ejemplo
-    HashMap<Vertice, HashMap<Integer, Long>> g = new HashMap<>();
+    private Map<Vertice, Map<Set<Vertice>, Integer>> g;
 
-
-    public GTab() {
+    public GTab(Matriz matriz) {
         //TODO: inicializar la estructura de datos
         //TODO: guardar los costes de todas las aristas con destino el vértice
         //       inicial. g(i, <conjuntoVacio>) para todo i.
+        g = new HashMap<>();
+        List<Arista> aristas = matriz.obtenerAristasHasta(0);
+
+        for (Arista a : aristas) {
+            int coste = a.obtenerCoste();
+            Vertice origen = a.obtenerOrigen();
+            Set<Vertice> camino = new HashSet<>();
+            guardarCoste(origen,camino, coste);
+        }
+
     }
 
     /**
@@ -24,17 +33,21 @@ public class GTab {
      *
      */
     public int devolverCoste (Vertice i, Set<Vertice> S) {
-        Long coste  = g.get(i).get(S.size());
+        Map<Set<Vertice>, Integer> camino  = g.get(i);
+        Integer coste = camino.get(S);
+
         if (coste == null){
 
             return VALOR_NO_CALCULADO;
         }
-        return coste.intValue();
+        return coste;
     }
 
     // Es ya coste mínimo?
     // Si coste es mínimo, se puede borrar el coste para S.size()-1
-    public void guardarCoste (Vertice i, Set<Vertice> S, long coste) {
-        g.get(i).put(S.size(), coste);
+    public void guardarCoste (Vertice i, Set<Vertice> S, int coste) {
+        Map<Set<Vertice>, Integer> camino = new HashMap<>();
+        camino.put(S, coste);
+        g.put(i, camino);
     }
 }
