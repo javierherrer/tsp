@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class GTab {
     public static final int VALOR_NO_CALCULADO = -1;
@@ -15,12 +12,18 @@ public class GTab {
     HashMap<Vertice, HashMap<Integer, Long>> g = new HashMap<>();
 
 
+    public GTab() {
+        //TODO: inicializar la estructura de datos
+        //TODO: guardar los costes de todas las aristas con destino el vértice
+        //       inicial. g(i, <conjuntoVacio>) para todo i.
+    }
+
     /**
      * Devuelve el coste si ha sido guardado previamente.
      * Si no, devuelve VALOR_NO_CALCULADO.
      *
      */
-    public int devolverCoste (Vertice i, List<Vertice> S) {
+    public int devolverCoste (Vertice i, Set<Vertice> S) {
         Long coste  = g.get(i).get(S.size());
         if (coste == null){
 
@@ -31,7 +34,7 @@ public class GTab {
 
     // Es ya coste mínimo?
     // Si coste es mínimo, se puede borrar el coste para S.size()-1
-    public void guardarCoste (Vertice i, List<Vertice> S, long coste) {
+    public void guardarCoste (Vertice i, Set<Vertice> S, long coste) {
         g.get(i).put(S.size(), coste);
     }
 }

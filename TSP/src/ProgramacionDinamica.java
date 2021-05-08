@@ -1,17 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ProgramacionDinamica implements AlgoritmoTSP {
     private static Matriz matriz;
     private static Vertice origen;
-    private static List<Vertice> S;
+    private static Set<Vertice> S;
     private static GTab gtab;
+    //Se puede sustituir por Recorrido si se cambia la parte de mat de ady
     private static List<Vertice> camino;
 
     public ProgramacionDinamica(Matriz matriz) {
         this.matriz = matriz;
         origen = new Vertice(0);
-        S = new ArrayList<>();
+        S = new HashSet<>();
         gtab = new GTab();
         camino = new ArrayList<>();
     }
@@ -34,11 +37,11 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
      *         una vez por cada vértice de S.
      *
      */
-    private static int g(Vertice i, List<Vertice> S) {
+    private static int g(Vertice i, Set<Vertice> S) {
         int masCorto = Integer.MAX_VALUE;
         int distancia = 0;
         int valorGtab = 0;
-        List<Vertice> nuevaS = new ArrayList<>();
+        Set<Vertice> nuevaS = new HashSet<>();
 
         if (S.isEmpty()) {
             return matriz.devolverCoste(i, origen);
@@ -46,7 +49,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
             valorGtab = gtab.devolverCoste(i, S);
             if ( valorGtab == GTab.VALOR_NO_CALCULADO ) {
                 for (Vertice j : S) {
-                    nuevaS = new ArrayList<>(S);
+                    nuevaS = new HashSet<>(S);
                     nuevaS.remove(j);
                     distancia = matriz.devolverCoste(i,j) + g(j, nuevaS);
                     if ( distancia < masCorto ) {
