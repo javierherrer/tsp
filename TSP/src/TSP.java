@@ -21,8 +21,8 @@ public class TSP {
 
     static public void main(String[] args) {
         if (DEBUG) {
-//            test("tspbenchmarks\\a4.tsp");
-            test("tspbenchmarks/att48.tsp");
+            test("tspbenchmarks\\a20.tsp");
+//            test("tspbenchmarks/att48.tsp");
 
             System.exit(0);
         }
@@ -74,13 +74,13 @@ public class TSP {
 //        System.out.println("Tiempo: " + time);
 //        System.out.println("Mejor recorrido: " + solucion);
 
-        System.out.println("**********ALGORITMO VORAZ**********");
-        time = System.currentTimeMillis();
-        solucion = new AlgoritmoVoraz(matriz).resolver();
-        time = System.currentTimeMillis() - time;
-
-        System.out.println("Tiempo: " + time);
-        System.out.println("Mejor recorrido: " + solucion);
+//        System.out.println("**********ALGORITMO VORAZ**********");
+//        time = System.currentTimeMillis();
+//        solucion = new AlgoritmoVoraz(matriz).resolver();
+//        time = System.currentTimeMillis() - time;
+//
+//        System.out.println("Tiempo: " + time);
+//        System.out.println("Mejor recorrido: " + solucion);
 
         System.out.println("**********Dinamica**********");
         time = System.currentTimeMillis();
