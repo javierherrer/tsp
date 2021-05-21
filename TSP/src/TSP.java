@@ -21,7 +21,7 @@ public class TSP {
 
     static public void main(String[] args) {
         if (DEBUG) {
-            test("tspbenchmarks\\a20.tsp");
+            test("tspbenchmarks\\a4.tsp");
 //            test("tspbenchmarks/att48.tsp");
 
             System.exit(0);

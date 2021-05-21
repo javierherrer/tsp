@@ -12,6 +12,11 @@ public class Arista implements Comparable<Arista>{
         this.coste = coste;
     }
 
+    public Arista(Vertice origen, Vertice destino){
+        this.origen = origen;
+        this.destino = destino;
+    }
+
 //    public boolean contiene(Vertice vertice) {
 //        return origen.equals(vertice) || destino.equals(vertice);
 //    }
@@ -22,7 +27,7 @@ public class Arista implements Comparable<Arista>{
 
     @Override
     public String toString() {
-        return "(" + origen + ", " + destino + ", " + coste+ ")";
+        return "(" + origen + ", " + destino + ")";
     }
 
     @Override

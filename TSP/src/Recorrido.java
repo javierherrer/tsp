@@ -13,6 +13,11 @@ public class Recorrido {
         matrizAdyacencia = new MatrizAdyacencia(vertices);
     }
 
+    public Recorrido(List<Arista> aristas, int coste){
+        this.aristas = aristas;
+        this.coste = coste;
+    }
+
     public int devolverCoste() {
         return coste;
     }

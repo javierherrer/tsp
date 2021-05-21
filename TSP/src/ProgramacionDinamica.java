@@ -9,14 +9,12 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
     private static Set<Vertice> S;
     private static GTab gtab;
     //Se puede sustituir por Recorrido si se cambia la parte de mat de ady
-    private static List<Vertice> camino;
 
     public ProgramacionDinamica(Matriz matriz) {
         this.matriz = matriz;
         origen = new Vertice(0);
         S = new HashSet<>();
         gtab = new GTab(matriz);
-        camino = new ArrayList<>();
     }
 
     /**
@@ -29,15 +27,37 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
      *
      */
     public Recorrido resolver() {
+        List<Arista> recorrido;
         int longitud = 0;
         Set<Vertice> S = matriz.devolverVertices();
         S.remove(origen);
 
         longitud = g(origen, S);
 
-        System.out.println("Mejor coste: " + longitud);
-        List<Vertice> c = camino;
-        return null;
+        recorrido = devolverRecorrido(S);
+        return new Recorrido(recorrido, longitud);
+    }
+
+    private List<Arista> devolverRecorrido(Set<Vertice> S) {
+        List<Arista> recorrido = new ArrayList<>();
+        Vertice vertice = origen;
+        Vertice nuevoVertice;
+        Arista arista;
+
+        do {
+            nuevoVertice = gtab.devolverJ(vertice, S);
+            arista = new Arista(vertice, nuevoVertice);
+
+            recorrido.add(arista);
+
+            S.remove(nuevoVertice);
+            vertice = nuevoVertice;
+        } while (! S.isEmpty());
+
+        arista = new Arista(vertice, origen);
+        recorrido.add(arista);
+
+        return recorrido;
     }
 
     /**
@@ -47,6 +67,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
      */
     private static int g(Vertice i, Set<Vertice> S) {
         int masCorto = Integer.MAX_VALUE;
+        Tupla tupla = new Tupla(masCorto);
         int distancia = 0;
         int valorGtab = 0;
         Set<Vertice> nuevaS = new HashSet<>();
@@ -62,10 +83,10 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
                     distancia = matriz.devolverCoste(i,j) + g(j, nuevaS);
                     if ( distancia < masCorto ) {
                         masCorto = distancia;
-                        camino.add(j);
+                        tupla = new Tupla(masCorto, j);
                     }
                 }
-                gtab.guardarCoste(i, S, masCorto);
+                gtab.guardarCoste(i, S, tupla);
                 return masCorto;
             } else {
                 return valorGtab;
