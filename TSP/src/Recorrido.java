@@ -7,6 +7,7 @@ public class Recorrido {
     MatrizAdyacencia matrizAdyacencia;
     int coste;
 
+
     public Recorrido(int vertices){
         aristas = new ArrayList<>();
         coste = 0;

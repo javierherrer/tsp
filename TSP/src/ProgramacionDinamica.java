@@ -70,7 +70,7 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
         Tupla tupla = new Tupla(masCorto);
         int distancia = 0;
         int valorGtab = 0;
-        Set<Vertice> nuevaS = new HashSet<>();
+        Set<Vertice> nuevaS;
 
         if (S.isEmpty()) {
             return matriz.devolverCoste(i, origen);
