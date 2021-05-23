@@ -181,7 +181,7 @@ public class Matriz {
     }
 
     /**
-     * Devuelve los vértices
+     * Devuelve los vartices
      *
      */
     public Set<Vertice> devolverVertices() {
@@ -193,7 +193,7 @@ public class Matriz {
     }
 
     /**
-     * Devuelve las parejas ordenadas desde un vértice por distancia creciente
+     * Devuelve las parejas ordenadas desde un vartice por distancia creciente
      *  entre sus puntos
      *
      */
@@ -212,7 +212,7 @@ public class Matriz {
     }
 
 //    /**
-//     * Devuelve las parejas ordenadas desde un vértice por distancia creciente
+//     * Devuelve las parejas ordenadas desde un vartice por distancia creciente
 //     *  entre sus puntos
 //     *
 //     */

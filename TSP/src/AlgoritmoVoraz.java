@@ -2,12 +2,12 @@ import java.util.List;
 
 /**
  * El algoritmo voraz para resolver el problema consistene en ir seleccionando
- *  todas las parejas de puntos que serán visitados de forma consecutiva:
- *  - Se seleccionará primero aquella pareja de puntos entre los que la
- *    distancia sea mínima;
- *  - a continuación, se selecciona la siguiente pareja separada con una
- *     distancia mínima siempre que esta nueva elección no haga que:
- *     * se visite un punto dos veces o más, o
+ *  todas las parejas de puntos que seran visitados de forma consecutiva:
+ *  - Se seleccionara primero aquella pareja de puntos entre los que la
+ *    distancia sea manima;
+ *  - a continuacian, se selecciona la siguiente pareja separada con una
+ *     distancia manima siempre que esta nueva eleccian no haga que:
+ *     * se visite un punto dos veces o mas, o
  *     * se cierre un recorrido antes de haber visitado todos los puntos.
  */
 public class AlgoritmoVoraz implements AlgoritmoTSP {
@@ -18,7 +18,7 @@ public class AlgoritmoVoraz implements AlgoritmoTSP {
     }
 
     /**
-     * Solución basada en el algoritmo de Kruscal
+     * Solucian basada en el algoritmo de Kruscal
      *
      */
     public Recorrido resolver() {
@@ -29,7 +29,7 @@ public class AlgoritmoVoraz implements AlgoritmoTSP {
         Vertice origen = new Vertice(0);
         List<Arista> aristas = matriz.obtenerAristasDesde(origen);
         Arista arista = aristas.get(i);
-        solucion.añadirArista(arista);
+        solucion.anyadirArista(arista);
 
         while (solucion.obtenerNumAristas() < vertices - 1) {
             Vertice ultimoVertice = arista.obtenerDestino();
@@ -39,11 +39,11 @@ public class AlgoritmoVoraz implements AlgoritmoTSP {
                 arista = aristas.get(i);
                 i++;
             } while (! solucion.aristaCumpleRestriccion(arista));
-            solucion.añadirArista(arista);
+            solucion.anyadirArista(arista);
         }
         int desde = arista.obtenerDestino().obtenerId();
         arista = new Arista(desde, 0, matriz.devolverCoste(desde, 0));
-        solucion.añadirArista(arista);
+        solucion.anyadirArista(arista);
 
         return solucion;
     }

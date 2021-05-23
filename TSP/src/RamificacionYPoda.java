@@ -43,6 +43,7 @@ public class RamificacionYPoda implements AlgoritmoTSP  {
             if (q.isEmpty() || q.peek().costeEstimado >= valorOptimo){
                 // Se ha encontrado solucion
                 System.out.println("Encontrada");
+                q.clear();
                 return crearRecorrido(ultimoHijo);
             }
 

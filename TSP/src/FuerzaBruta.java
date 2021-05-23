@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * El algoritmo de fuerza bruta para resolver el problema consiste en intentar
  *  todas las posibilidades, es decir, calcular las longitudes de todos los
- *  recorridos posibles, y seleccionar la de longitud mínima.
+ *  recorridos posibles, y seleccionar la de longitud manima.
  *
  */
 public class FuerzaBruta implements AlgoritmoTSP{

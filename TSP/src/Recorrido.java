@@ -23,10 +23,10 @@ public class Recorrido {
         return coste;
     }
 
-    public void añadirArista(Arista arista) {
+    public void anyadirArista(Arista arista) {
         aristas.add(arista);
         coste += arista.obtenerCoste();
-        matrizAdyacencia.añadirArista(arista);
+        matrizAdyacencia.anyadirArista(arista);
     }
 
     public int obtenerNumAristas() {

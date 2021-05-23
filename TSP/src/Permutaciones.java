@@ -51,19 +51,19 @@ public class Permutaciones {
 
         int desde = 0;
         int hasta = vertices[0];
-        recorrido.añadirArista(new Arista(desde, hasta,
+        recorrido.anyadirArista(new Arista(desde, hasta,
                 matriz.devolverCoste(desde, hasta)));
 
         for(i = 1; i < vertices.length; i++) {
             desde = vertices[i-1];
             hasta = vertices[i];
-            recorrido.añadirArista(new Arista(desde, hasta,
+            recorrido.anyadirArista(new Arista(desde, hasta,
                     matriz.devolverCoste(desde, hasta)));
         }
 
         desde = vertices[i-1];
         hasta = 0;
-        recorrido.añadirArista(new Arista(desde, hasta,
+        recorrido.anyadirArista(new Arista(desde, hasta,
                                 matriz.devolverCoste(desde, hasta)));
 
         return recorrido;

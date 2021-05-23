@@ -61,8 +61,8 @@ public class ProgramacionDinamica implements AlgoritmoTSP {
     }
 
     /**
-     * g(i,S): longitud del camino mínimo desde i hasta 1 que pase exactamente
-     *         una vez por cada vértice de S.
+     * g(i,S): longitud del camino manimo desde i hasta 1 que pase exactamente
+     *         una vez por cada vartice de S.
      *
      */
     private static int g(Vertice i, Set<Vertice> S) {

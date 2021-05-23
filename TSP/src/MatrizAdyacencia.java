@@ -23,10 +23,10 @@ public class MatrizAdyacencia {
     }
 
     /**
-     * Asigna un valor de verdad en la posición correspondiente
+     * Asigna un valor de verdad en la posician correspondiente
      * @param arista
      */
-    public void añadirArista(Arista arista) {
+    public void anyadirArista(Arista arista) {
         Vertice desde = arista.obtenerOrigen();
         Vertice hasta = arista.obtenerDestino();
         matriz[desde.obtenerId()][hasta.obtenerId()] = true;
